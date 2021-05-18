@@ -3,43 +3,50 @@ import csv
 
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
-def PyBank_Analysis (financial_data):
-    month = financial_data[0]
-    profit_loss = financial_data[1]
-    plsum = 0.0
-    plchange = []
-
-    total_months = len(month)
-
-    for row in profit_loss:
-        plsum += profit_loss
-
-
-    for row in profit_loss:
-        change = row - (row - 1)
-        plchange.append(change)
-
-    def average_change(list):
-        length = len(list)
-        total = 0.0
-        for number in list:
-            total += number
-        return total / length
-
-    print("Financial Analysis")
-    print("---------------------")
-    print(f"Total Months: {total_months}")
-    print(f"Average Change: {average_change}")
-    print(f"Greatest Increase in Profits: ")
-    print(f"Greatest Decrease in Profits: ")
-    
-print(PyBank_Analysis)
-
 with open(csvpath, 'r') as csvfile:
 
-    # CSV reader specifies delimiter and variable that holds contents
-    csvreader = csv.reader(csvfile, delimiter=',')
+    financial_data = csv.reader(csvfile, delimiter=',')
 
-    header = next(csvreader)
+    header = next(financial_data)
 
-output_file = os.path.join("output.csv")
+    def PyBank_Analysis (financial_data):
+        month = financial_data[0]
+        profit_loss = financial_data[1]
+        max_profit = 0
+        max_loss = 0
+        total_months = 0
+        plsum = 0.0
+
+        for row in financial_data:
+            total_months += 1
+    
+        print(total_months)
+
+        for row in financial_data:
+            plsum += profit_loss
+
+        print(plsum)
+
+        for row in financial_data:
+            if profit_loss > max_profit:
+                max_profit = profit_loss
+
+        print(max_profit)
+
+        for row in financial_data:
+            if profit_loss < max_loss:
+                max_loss = profit_loss
+
+        print(max_loss)
+
+        average_change = plsum / total_months
+
+        print("Financial Analysis")
+        print("---------------------")
+        print(f"Total Months: {total_months}")
+        print(f"Average Change: {average_change}")
+        print(f"Greatest Increase in Profits: {max_profit}")
+        print(f"Greatest Decrease in Profits: {max_loss}")
+    
+    
+print(PyBank_Analysis)
