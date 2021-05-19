@@ -15,7 +15,9 @@ with open(csvpath, 'r') as csvfile:
             candidate = row[2]
             total_votes += 1
             
-            candidate_dic[str(candidate)] = 1
-            
+            candidate_dic[str(candidate)] = candidate_dic.get(str(candidate), 0) + 1
+
         print(total_votes)
+
+        
         print(candidate_dic)
