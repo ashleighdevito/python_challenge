@@ -38,14 +38,14 @@ def PyFinancial(file):
         average_change = round(pl_change / total_months, 2)
 
         print("Financial Analysis")
-        print("---------------------")
+        print("------------------------------")
         print(f"Total Months: {total_months}")
         print(f"Total: ${int(pl_sum)}")
         print("Average Change: $" + "{:.2f}".format(round(average_change,2)))
         print(f"Greatest Increase in Profits: {max_month} (${max_profit})")
         print(f"Greatest Decrease in Profits: {min_month} (${max_loss})")
 
-output_path = os.path.join("analysis", "bankanalysis.txt")
+output_path = os.path.join("analysis", "bank_analysis.txt")
 
 output = str(PyFinancial(csvpath))
 
