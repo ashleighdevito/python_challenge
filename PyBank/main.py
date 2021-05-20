@@ -37,7 +37,6 @@ def PyBank():
         pl_change = pl_end - pl_start
         average_change = (pl_change / total_months)
         average_delta = ("%.2f" % average_change)
-        print(average_change)
 
         print("Financial Analysis")
         print("------------------------------")
