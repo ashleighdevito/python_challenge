@@ -3,7 +3,7 @@ import csv
 
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
-def PyFinancial(file):
+def PyBank():
 
     with open(csvpath, 'r') as csvfile:
 
@@ -35,19 +35,32 @@ def PyFinancial(file):
             pl_end = profit_loss
 
         pl_change = pl_end - pl_start
-        average_change = round(pl_change / total_months, 2)
+        average_change = (pl_change / total_months)
+        average_delta = ("%.2f" % average_change)
+        print(average_change)
 
         print("Financial Analysis")
         print("------------------------------")
         print(f"Total Months: {total_months}")
         print(f"Total: ${int(pl_sum)}")
-        print("Average Change: $" + "{:.2f}".format(round(average_change,2)))
+        print(f"Average Change: $ {average_delta}")
         print(f"Greatest Increase in Profits: {max_month} (${max_profit})")
         print(f"Greatest Decrease in Profits: {min_month} (${max_loss})")
 
+        output = (
+        "Financial Analysis\n"
+        "------------------------------\n"
+        f"Total Months: {total_months}\n"
+        f"Total: ${int(pl_sum)}\n"
+        f"Average Change: $ {average_delta}\n"
+        f"Greatest Increase in Profits: {max_month} (${max_profit})\n"
+        f"Greatest Decrease in Profits: {min_month} (${max_loss})\n"
+        )
+
+        return output
+
 output_path = os.path.join("analysis", "bank_analysis.txt")
 
-output = str(PyFinancial(csvpath))
-
 with open(output_path, 'w') as txtfile:
-    txtfile.write(output)
+    analysis = PyBank()
+    txtfile.writelines(analysis)
