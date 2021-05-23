@@ -1,6 +1,5 @@
 # python_challenge
-
-In this project, I have created a python script to analyze two sets of data.  One financial analysis and the other a political election. 
+This project contains a python script to analyze two sets of data.  One financial analysis and the other a political election. 
 
 The financial analysis reads data contained within a csv file and reports:
 
